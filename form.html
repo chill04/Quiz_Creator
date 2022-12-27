@@ -1,0 +1,72 @@
+ <html>
+  <head>
+    <style>
+    body {background-color: LimeGreen;
+       font-size: 150%;}
+    #name {height:30px;
+            font-size:14pt;}
+    #quizName{height:30px;
+                font-size:14pt;}
+    .button {
+            background-color: yellow;
+            color: black;
+            font-size: 100%;}
+    </style>
+    <base target="_top">
+  </head>
+
+    <body>
+    <form id="myForm">
+      <legend style="font-size:18px;">(Optional) Format spreadsheet for ease of use; adds titles and color coding</legend>
+      <input type="button" style="background-color:OrangeRed;font-size:18px;"   class="button" name="okie dokie" value="Format spreadsheet" onclick="google.script.run.formatSheet()";><br><br><br>
+      <legend>CREATE QUIZ:</legend>
+      <input type="text" name="name" id="name" placeholder="Name of form">
+      <input type="text" name="quizName" id="quizName" placeholder="Name of quiz (optional)">
+      <br><br>
+    <legend>Shuffle question order?</legend>
+    <div>
+      <fieldset id="ShuffleQuestion">
+      <input
+        type="radio"
+        id="yes"
+        name="shuffle"
+        value= "yes"
+        checked />
+      <label for="yes">Yes</label>
+ 
+      <input type="radio" id="no" name="shuffle" value= "no" />
+      <label for="no">No</label>
+      </fieldset>
+    </div>
+    <br>
+      <input type="button" class="button" value="Submit" onclick="submitData()";>
+      <input type="button" class="button" value="Close sidebar" onclick="google.script.host.close();">
+    <br>
+    </form>
+    <br><br>
+    <legend>NOTE: You can add alternate acceptable answers with columns C, D, E, etc.  </legend>
+
+    <script>
+      function submitData() {
+        var name = document.getElementById("name").value;
+        var secondName = document.getElementById("quizName").value;
+        // var isShuffle = document.getElementById("isShuffle").value;
+        var isShuffle = document.querySelector('input[name="shuffle"]:checked').value;
+        if (secondName == "") {
+        secondName = name;
+        }
+        var formData = [name, secondName, isShuffle];
+        google.script.run.withSuccessHandler(onSuccess).withFailureHandler(onFailure).formEntry(formData);
+      }
+
+      function onSuccess(result) {
+        console.log("success");
+      }
+
+      function onFailure(error) {
+        console.log("failure");
+        console.log(error);
+      }
+    </script>
+  </body>
+</html>
