@@ -25,4 +25,3 @@ formEntry() - Takes user information from the sidebar
 testFormEntry() - For testing; pretends information is being sent from sidebar
 showAlert() - After form is created, creates a success popup
 openUrl() - Links user to the newly created form
-
