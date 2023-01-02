@@ -14,5 +14,15 @@ The ability to create short-answer questions IS available through the GoogleForm
 input questions/answers, use the HTML sidebar to name it and call the functions to create the quiz.
 
 The script has 11 functions:
-
+onOpen() - Adds app to Toolbar
+showCreatorSidebar() - Opens app sidebar
+formatSheet() - Adds formatting to Sheet, to identify columns
+returnValues() - Reads data from GoogleSheet
+createMultipleSolutions() - Creates answer arrays
+addQuestionToQuiz() - Adds questions, one by one, to quiz *This does most of the work
+createTheQuiz() - Creates the GoogleForm, sets form settings
+formEntry() - Takes user information from the sidebar
+testFormEntry() - For testing; pretends information is being sent from sidebar
+showAlert() - After form is created, creates a success popup
+openUrl() - Links user to the newly created form
 
